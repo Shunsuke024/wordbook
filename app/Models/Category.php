@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     
-    public function posts()
+    public function words()
     {
         return $this->hasMany(Word::class);
     }
@@ -19,4 +19,3 @@ class Category extends Model
         return $this->words()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
-

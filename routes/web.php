@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,9 +26,15 @@ Route::get('/dashboard', function () {
 
 Route::controller(WordController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
+    Route::post('/words', 'store')->name('store');
+    Route::get('/words/create', 'create')->name('create');
+    Route::get('/words/{word}', 'index')->name('show');
+    Route::put('/words/{word}', 'update')->name('update');
+    Route::delete('/words/{word}', 'delete')->name('delete');
+    Route::get('/words/{word}/edit', 'edit')->name('edit');
 });
 
-Route::get('/', [WordController::class, 'index'])->name('index'); //->middleware('auth');
+Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
