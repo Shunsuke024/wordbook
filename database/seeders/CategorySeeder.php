@@ -27,5 +27,55 @@ class CategorySeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
+        
+        DB::table('categories')->insert([
+            'name' => '地理',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '世界史',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '日本史',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '理科',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '物理',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '化学',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '国語',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '数学',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
+        
     }
 }

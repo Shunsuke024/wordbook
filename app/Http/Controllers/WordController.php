@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Requests;
+use App\Http\Requests\WordRequest;
 use App\Models\Word;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,8 @@ class WordController extends Controller
         }
         
         if(!empty($keyword)) {
-            $query->where('English', 'LIKE', "%{$keyword}%")
-             ->orWhere('Japanese', 'LIKE', "%{$keyword}%");
+            $query->where('word_left', 'LIKE', "%{$keyword}%")
+             ->orWhere('word_right', 'LIKE', "%{$keyword}%");
         }
         
         $words = $query->with('category')->orderBy($sort_view,  $order_view)->paginate(10);
@@ -44,16 +45,15 @@ class WordController extends Controller
         ]);
     }
     
-    public function store(Request $request, Word $word)
+    public function store(WordRequest $request, Word $word)
     {
         $requests = $request->all();
         array_splice($requests, 0, 1);
         
         foreach ($requests as $input){
             $input['user_id'] = Auth::id();
-            
-                $word = new Word();
-                $word->fill($input)->save();
+            $word = new Word();
+            $word->fill($input)->save();
             
         }
         return redirect('/');

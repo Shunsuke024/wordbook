@@ -17,7 +17,7 @@ function addBox() {
         var left = document.createElement('textarea');//rows="1" cols="40" style="overflow:hidden"
         left.classList.add('left');
         left.setAttribute('id', 'left_'+i);
-        left.setAttribute('name', `words${i}[English]`);
+        left.setAttribute('name', `words${i}[word_left]`);
         left.setAttribute('rows', '1');
         left.setAttribute('cols', '40');
         left.setAttribute('style', 'overflow:hidden');
@@ -26,7 +26,7 @@ function addBox() {
         var right = document.createElement('textarea');
         right.classList.add('right');
         right.setAttribute('id', 'right_'+i);
-        right.setAttribute('name', `words${i}[Japanese]`);
+        right.setAttribute('name', `words${i}[word_right]`);
         right.setAttribute('rows', '1');
         right.setAttribute('cols', '40');
         right.setAttribute('style', 'overflow:hidden');
