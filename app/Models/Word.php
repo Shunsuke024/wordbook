@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Word extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     
     protected $fillable = [
-        'category_id'
+        'English',
+        'Japanese',
+        'category_id',
+        'user_id'
         ];
     
     public function getPaginateByLimit(int $limit_count = 10)
