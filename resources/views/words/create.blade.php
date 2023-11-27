@@ -21,9 +21,13 @@
         
         <div id="main" class="text-center mt-5 mb-5">
             <div id="text">
-                <textarea class="left" id="left_1" name="words1[English]" rows="1" cols="40" style="overflow:hidden"></textarea>
-                <textarea class="right" id="right_1" name="words1[Japanese]" rows="1" cols="40" style="overflow:hidden"></textarea>
+                <textarea class="left" id="left_1" name="words1[word_left]" rows="1" cols="40" style="overflow:hidden">{{ old('words1.word_left') }}</textarea>
+                <textarea class="right" id="right_1" name="words1[word_right]" rows="1" cols="40" style="overflow:hidden">{{ old('words1.word_right') }}</textarea>
             </div>
+        </div>
+        <div class="text-center">
+        <p class="text-red-600">{{ $errors->first('words.word_left') }}</p>
+        <p class="text-red-600">{{ $errors->first('words.word_right') }}</p>
         </div>
     </form>
     

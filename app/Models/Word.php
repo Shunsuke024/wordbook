@@ -12,8 +12,8 @@ class Word extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'English',
-        'Japanese',
+        'word_left',
+        'word_right',
         'category_id',
         'user_id'
         ];

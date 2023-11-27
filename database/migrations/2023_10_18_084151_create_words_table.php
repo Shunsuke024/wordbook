@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrationed();
             $table->foreignId('category_id')->constrationed();
-            $table->string('English', 200);
-            $table->string('Japanese', 200);
+            $table->string('word_left', 200);
+            $table->string('word_right', 200);
             $table->timestamps();
             $table->softDeletes();
         });

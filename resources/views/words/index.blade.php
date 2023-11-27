@@ -28,8 +28,8 @@
     <div class="words mt-5 mb-5">
         @foreach ($words as $i => $word)
             <div class="flex justify-center items-center">
-                <p class="basis-1/4 border border-2 border-blue-100 bg-white text-xl text-center ml-24 mb-px mr-px whitespace-pre-wrap" >{{ $word->English }}</p>
-                <p class="basis-1/4 border border-2 border-blue-100 bg-white text-xl text-center mb-px whitespace-pre-wrap" id="right_{{ $i }}">{{ $word-> Japanese }}</p>
+                <p class="basis-1/4 border border-2 border-blue-100 bg-white text-xl text-center ml-24 mb-px mr-px whitespace-pre-wrap" >{{ $word->word_left }}</p>
+                <p class="basis-1/4 border border-2 border-blue-100 bg-white text-xl text-center mb-px whitespace-pre-wrap" id="right_{{ $i }}">{{ $word->word_right }}</p>
                 
                 <button class="" id="button_{{ $i }}">非表示</button>
                 

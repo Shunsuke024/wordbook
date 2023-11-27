@@ -17,10 +17,10 @@ class WordSeeder extends Seeder
     public function run()
     {
         DB::table('words')->insert([
-                'user_id' => '2',
+                'user_id' => '1',
                 'category_id' => '1',
-                'English' => 'apple',
-                'Japanese'=> 'りんご',
+                'word_left' => 'apple',
+                'word_right'=> 'りんご',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
         ]);
