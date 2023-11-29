@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Requests;
-use App\Http\Requests\WordRequest;
+use Illuminate\Http\Request;
 use App\Models\Word;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -15,12 +14,18 @@ class WordController extends Controller
         $keyword = $request->input('keyword');
         $category_id = $request->categories;
         $order = $request->order;
+        $num = $request->num;
         
+        $number = "10";
         $sort_view = "id";
         $order_view = "DESC";
         
         $query = Word::query();
         $query->where('user_id', Auth::id());
+        
+        if(!empty($num)){
+            $number = $num;
+        }
         
         if($order=="ASC"){
             $order_view = "ASC";
@@ -37,15 +42,15 @@ class WordController extends Controller
              ->orWhere('word_right', 'LIKE', "%{$keyword}%");
         }
         
-        $words = $query->with('category')->orderBy($sort_view,  $order_view)->paginate(10);
+        $words = $query->with('category')->orderBy($sort_view,  $order_view)->paginate($number);
         
         return view('words.index')->with([
             'words' => $words, 'categories' => $category->get(),
-            'keyword' => $keyword, 'category_id' => $category_id, 'order_view' => $order_view
+            'keyword' => $keyword, 'category_id' => $category_id, 'order_view' => $order_view, 'number' => $number
         ]);
     }
     
-    public function store(WordRequest $request, Word $word)
+    public function store(Request $request, Word $word)
     {
         $requests = $request->all();
         array_splice($requests, 0, 1);
@@ -53,8 +58,13 @@ class WordController extends Controller
         foreach ($requests as $input){
             $input['user_id'] = Auth::id();
             $word = new Word();
-            $word->fill($input)->save();
+            $word->fill($input);
             
+            if(!empty($word->word_left || $word->word_rifht)){
+                $word->save();
+            }else{
+                unset($word);
+            }
         }
         return redirect('/');
     }

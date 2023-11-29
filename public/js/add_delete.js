@@ -3,9 +3,9 @@ var i = 2;
 
 //追加
 function addBox() {
-    
     const div = document.createElement('div');
     div.setAttribute('id', 'text');
+    div.setAttribute('class', 'bg-sky-100');
     if (!div.hasChildNodes()) {
         let select = document.getElementById('category').value;
         var input = document.createElement('input');
@@ -14,20 +14,19 @@ function addBox() {
         input.setAttribute('name', `words${i}[category_id]`);
         div.appendChild(input);
     
-        var left = document.createElement('textarea');//rows="1" cols="40" style="overflow:hidden"
+        var left = document.createElement('textarea');
         left.classList.add('left');
         left.setAttribute('id', 'left_'+i);
         left.setAttribute('name', `words${i}[word_left]`);
-        left.setAttribute('rows', '1');
         left.setAttribute('cols', '40');
         left.setAttribute('style', 'overflow:hidden');
+        
         div.appendChild(left);
         
         var right = document.createElement('textarea');
         right.classList.add('right');
         right.setAttribute('id', 'right_'+i);
         right.setAttribute('name', `words${i}[word_right]`);
-        right.setAttribute('rows', '1');
         right.setAttribute('cols', '40');
         right.setAttribute('style', 'overflow:hidden');
         div.appendChild(right);
@@ -43,4 +42,5 @@ function delBox() {
     if (main.hasChildNodes()) {
         main.lastElementChild.remove();
     }
+    i--
 }
