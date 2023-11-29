@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function(){
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(WordController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
@@ -33,8 +37,6 @@ Route::controller(WordController::class)->middleware(['auth'])->group(function()
     Route::delete('/words/{word}', 'delete')->name('delete');
     Route::get('/words/{word}/edit', 'edit')->name('edit');
 });
-
-Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
