@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\WordRequest;
 use App\Models\Word;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -54,17 +55,23 @@ class WordController extends Controller
     {
         $requests = $request->all();
         array_splice($requests, 0, 1);
+        $count = count($requests);
+        
+        for($i=1; $i<=$count; $i++){
+            $request->validate([
+                "words{$i}.word_left" => 'required',
+                "words{$i}.word_right" => 'required',
+            ],
+            [
+                "words{$i}.word_left.required" => "左の上から{$i}番目の欄が空欄です",
+                "words{$i}.word_right.required" => "右の上から{$i}番目の欄が空欄です",
+            ]);
+        }
         
         foreach ($requests as $input){
             $input['user_id'] = Auth::id();
             $word = new Word();
-            $word->fill($input);
-            
-            if(!empty($word->word_left || $word->word_rifht)){
-                $word->save();
-            }else{
-                unset($word);
-            }
+            $word->fill($input)->save();
         }
         return redirect('/');
     }
