@@ -13,9 +13,7 @@ class WordRequest extends FormRequest
     
     public function rules()
     {
-        return[
-            
-        ];
+        
     }
     
 }

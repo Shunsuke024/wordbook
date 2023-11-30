@@ -1,6 +1,6 @@
 <x-app-layout>
     <p class="text-center text-3xl mt-5">登録したい単語を入力</p>
-    <p class="text-center text-xl">下の追加・削除ボタンで入力欄を追加・削除できます</p>
+    <p class="text-center text-xl">下の追加・削除ボタンで入力欄を追加・削除できます(20個まで)</p>
     <p class="text-center text-xl text-red-600">＊空欄は作らないでください</p>
     
     
@@ -29,6 +29,7 @@
         </div>
     </form>
     
+    <p id="max_box" style="display:none" class="text-center text-red-600">入力欄が20個に達しました</p>
     <div class="flex justify-around mt-5 mb-5">
         <div class="flex items-center">
         <button class="bg-blue-400 hover:bg-blue-500 text-white rounded px-2 py-1 mr-2 ml-5 shadow-lg" id="add_btn" name="add" onclick="addBox()">追加</button>
