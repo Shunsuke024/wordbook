@@ -1,6 +1,12 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    
+    <div class="flex items-center justify-end">
+        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/register">
+            register
+        </a>
+    </div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
