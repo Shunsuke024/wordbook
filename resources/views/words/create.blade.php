@@ -20,8 +20,8 @@
         
         <div id="main" class="text-center mb-5 py-8 bg-sky-100">
             <div id="text" class="pt-2.5">
-                <textarea class="left" id="left_1" name="words1[word_left]" cols="40" style="overflow:hidden">{{ old('words1.word_left') }}</textarea>
-                <textarea class="right" id="right_1" name="words1[word_right]" cols="40" style="overflow:hidden">{{ old('words1.word_right') }}</textarea>
+                <textarea class="left" id="left_1" name="words1[word_left]" style="overflow:hidden">{{ old('words1.word_left') }}</textarea>
+                <textarea class="right" id="right_1" name="words1[word_right]" style="overflow:hidden">{{ old('words1.word_right') }}</textarea>
             </div>
         </div>
         <div class="text-center">

@@ -18,7 +18,6 @@ function addBox() {
             left.classList.add('left');
             left.setAttribute('id', 'left_'+i);
             left.setAttribute('name', `words${i}[word_left]`);
-            left.setAttribute('cols', '40');
             left.setAttribute('style', 'overflow:hidden');
             
             div.appendChild(left);
@@ -27,7 +26,6 @@ function addBox() {
             right.classList.add('right');
             right.setAttribute('id', 'right_'+i);
             right.setAttribute('name', `words${i}[word_right]`);
-            right.setAttribute('cols', '40');
             right.setAttribute('style', 'overflow:hidden');
             div.appendChild(right);
             
