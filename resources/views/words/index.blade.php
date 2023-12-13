@@ -1,9 +1,9 @@
 <x-app-layout>
     <p class="text-3xl text-center mt-5">単語一覧</p>
-    <p class="text-center text-xl mb-5">非表示ボタンを押すことで単語を非表示にできます</p>
+    <p class="text-center text-xl mb-5">隠すボタンを押すことで単語を隠せます</p>
     <form class="" action="/" method="get">
         @csrf
-        <div class="flex justify-around text-center items-center mb-5 ml-5">
+        <div class="flex justify-between text-center items-center mb-5 ml-5">
             <div>
                 <select id="displaynumber" name="num">
                     <option value="10" @if($number == "10") selected @endif>10</option>
@@ -28,7 +28,7 @@
                 <input class="bg-blue-400 hover:bg-blue-500 text-white rounded px-2 py-1 shadow-lg" type="submit" value="検索">
             </div>
     </form>
-        <a class="text-blue-600 underline decoration-blue-600 mr-20" href="/words/create">単語登録</a>
+        <a class="text-blue-600 underline decoration-blue-600 mr-5" href="/words/create">単語登録</a>
         </div>
     
     <div class="words mt-5 mb-5 py-8 bg-sky-100">
